@@ -1,0 +1,14 @@
+Dataset:
+    https://www.kaggle.com/datasets/abhayayare/e-commerce-dataset
+
+Business Insights to data set:
+    1.) Is there a correlation between returns/cancelled items and low reviews?
+    2.) What items are returned most frequently?
+    3.) What items are sold and not returned most frequently?
+    4.) What items are sold the least (i.e. no sale period, not just a returned/canceled sale)?
+    5.) Is there a correlation between the day of the week and event type (sales, returns, cancellations, etc.)?
+    6.) What days of the week are sales most frequent?
+    7.) What items are bought together most frequently?
+    8.) Does that change the answer as to what items sell most/least frequently?
+    9.) What customers are the most frequent buyers?
+    10.) How much have the 5 most frequent purchasers spent, excluding returns/cancels?
