@@ -1,0 +1,377 @@
+#Case 1, full load ingestion
+[ec2-user@ip-172-31-3-80 tsimmons]$ sqoop import --connect jdbc:postgresql://18.134.163.221:5432/testdb?currentSchema=tsimmons --username admin --password admin123 --table employee --target-dir UKUS18nov/tsimmons/employee1 -m 1
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/jars/slf4j-log4j12-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/jars/log4j-slf4j-impl-2.13.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+25/12/05 16:19:14 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7.7.1.7.0-551
+25/12/05 16:19:14 WARN tool.BaseSqoopTool: Setting your password on the command-line is insecure. Consider using -P instead.
+25/12/05 16:19:14 INFO manager.SqlManager: Using default fetchSize of 1000
+25/12/05 16:19:14 INFO tool.CodeGenTool: Beginning code generation
+25/12/05 16:19:14 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM "employee" AS t LIMIT 1
+25/12/05 16:19:14 INFO orm.CompilationManager: HADOOP_MAPRED_HOME is /opt/cloudera/parcels/CDH/lib/hadoop-mapreduce
+warning: No SupportedSourceVersion annotation found on org.apache.hadoop.hdds.conf.ConfigFileGenerator, returning RELEASE_6.
+warning: Supported source version 'RELEASE_6' from annotation processor 'org.apache.hadoop.hdds.conf.ConfigFileGenerator' less than -source '1.8'
+2 warnings
+25/12/05 16:19:16 WARN orm.CompilationManager: Could not rename /tmp/sqoop-ec2-user/compile/0c76d08bb8e94719fa5f6cfd8e7802ba/employee.java to /home/ec2-user/ukus18nov/tsimmons/./employee.java. Error: Destination '/home/ec2-user/ukus18nov/tsimmons/./employee.java' already exists
+25/12/05 16:19:16 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-ec2-user/compile/0c76d08bb8e94719fa5f6cfd8e7802ba/employee.jar
+25/12/05 16:19:16 WARN manager.PostgresqlManager: It looks like you are importing from postgresql.
+25/12/05 16:19:16 WARN manager.PostgresqlManager: This transfer can be faster! Use the --direct
+25/12/05 16:19:16 WARN manager.PostgresqlManager: option to exercise a postgresql-specific fast path.
+25/12/05 16:19:16 INFO mapreduce.ImportJobBase: Beginning import of employee
+25/12/05 16:19:16 INFO Configuration.deprecation: mapred.jar is deprecated. Instead, use mapreduce.job.jar
+25/12/05 16:19:17 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
+25/12/05 16:19:17 INFO client.RMProxy: Connecting to ResourceManager at ip-172-31-3-80.eu-west-2.compute.internal/172.31.3.80:8032
+25/12/05 16:19:17 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /user/ec2-user/.staging/job_1764529937562_0581
+25/12/05 16:19:22 INFO db.DBInputFormat: Using read commited transaction isolation
+25/12/05 16:19:22 INFO mapreduce.JobSubmitter: number of splits:1
+25/12/05 16:19:23 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1764529937562_0581
+25/12/05 16:19:23 INFO mapreduce.JobSubmitter: Executing with tokens: []
+25/12/05 16:19:23 INFO conf.Configuration: resource-types.xml not found
+25/12/05 16:19:23 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+25/12/05 16:19:23 INFO impl.YarnClientImpl: Submitted application application_1764529937562_0581
+25/12/05 16:19:23 INFO mapreduce.Job: The url to track the job: http://ip-172-31-3-80.eu-west-2.compute.internal:8088/proxy/application_1764529937562_0581/
+25/12/05 16:19:23 INFO mapreduce.Job: Running job: job_1764529937562_0581
+25/12/05 16:19:30 INFO mapreduce.Job: Job job_1764529937562_0581 running in uber mode : false
+25/12/05 16:19:30 INFO mapreduce.Job:  map 0% reduce 0%
+25/12/05 16:19:54 INFO mapreduce.Job:  map 100% reduce 0%
+25/12/05 16:19:55 INFO mapreduce.Job: Job job_1764529937562_0581 completed successfully
+25/12/05 16:19:55 INFO mapreduce.Job: Counters: 33
+        File System Counters
+                FILE: Number of bytes read=0
+                FILE: Number of bytes written=259956
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=85
+                HDFS: Number of bytes written=695
+                HDFS: Number of read operations=6
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=2
+                HDFS: Number of bytes read erasure-coded=0
+        Job Counters
+                Launched map tasks=1
+                Other local map tasks=1
+                Total time spent by all maps in occupied slots (ms)=22148
+                Total time spent by all reduces in occupied slots (ms)=0
+                Total time spent by all map tasks (ms)=22148
+                Total vcore-milliseconds taken by all map tasks=88592
+                Total megabyte-milliseconds taken by all map tasks=181436416
+        Map-Reduce Framework
+                Map input records=8
+                Map output records=8
+                Input split bytes=85
+                Spilled Records=0
+                Failed Shuffles=0
+                Merged Map outputs=0
+                GC time elapsed (ms)=860
+                CPU time spent (ms)=8650
+                Physical memory (bytes) snapshot=313171968
+                Virtual memory (bytes) snapshot=6615998464
+                Total committed heap usage (bytes)=230686720
+                Peak Map Physical memory (bytes)=313171968
+                Peak Map Virtual memory (bytes)=6618513408
+        File Input Format Counters
+                Bytes Read=0
+        File Output Format Counters
+                Bytes Written=695
+25/12/05 16:19:55 INFO mapreduce.ImportJobBase: Transferred 695 bytes in 38.8851 seconds (17.8732 bytes/sec)
+25/12/05 16:19:55 INFO mapreduce.ImportJobBase: Retrieved 8 records.
+#Case 1, full load export
+[ec2-user@ip-172-31-3-80 tsimmons]$ sqoop export --connect jdbc:postgresql://18.134.163.221:5432/testdb?currentSchema=tsimmons --username admin --password admin123 --table employee_ingested --m 1 --export-dir UKUS18nov/tsimmons/employee1/
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/jars/slf4j-log4j12-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/jars/log4j-slf4j-impl-2.13.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+25/12/05 16:23:04 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7.7.1.7.0-551
+25/12/05 16:23:04 WARN tool.BaseSqoopTool: Setting your password on the command-line is insecure. Consider using -P instead.
+25/12/05 16:23:04 INFO manager.SqlManager: Using default fetchSize of 1000
+25/12/05 16:23:04 INFO tool.CodeGenTool: Beginning code generation
+25/12/05 16:23:05 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM "employee_ingested" AS t LIMIT 1
+25/12/05 16:23:05 INFO orm.CompilationManager: HADOOP_MAPRED_HOME is /opt/cloudera/parcels/CDH/lib/hadoop-mapreduce
+warning: No SupportedSourceVersion annotation found on org.apache.hadoop.hdds.conf.ConfigFileGenerator, returning RELEASE_6.
+warning: Supported source version 'RELEASE_6' from annotation processor 'org.apache.hadoop.hdds.conf.ConfigFileGenerator' less than -source '1.8'
+2 warnings
+25/12/05 16:23:06 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-ec2-user/compile/6856e20334d1d6d83e40ce4d9f19bb79/employee_ingested.jar
+25/12/05 16:23:06 INFO mapreduce.ExportJobBase: Beginning export of employee_ingested
+25/12/05 16:23:07 INFO Configuration.deprecation: mapred.jar is deprecated. Instead, use mapreduce.job.jar
+25/12/05 16:23:07 INFO Configuration.deprecation: mapred.reduce.tasks.speculative.execution is deprecated. Instead, use mapreduce.reduce.speculative
+25/12/05 16:23:07 INFO Configuration.deprecation: mapred.map.tasks.speculative.execution is deprecated. Instead, use mapreduce.map.speculative
+25/12/05 16:23:07 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
+25/12/05 16:23:08 INFO client.RMProxy: Connecting to ResourceManager at ip-172-31-3-80.eu-west-2.compute.internal/172.31.3.80:8032
+25/12/05 16:23:08 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /user/ec2-user/.staging/job_1764529937562_0582
+25/12/05 16:23:14 INFO input.FileInputFormat: Total input files to process : 1
+25/12/05 16:23:14 INFO input.FileInputFormat: Total input files to process : 1
+25/12/05 16:23:14 INFO mapreduce.JobSubmitter: number of splits:1
+25/12/05 16:23:14 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1764529937562_0582
+25/12/05 16:23:14 INFO mapreduce.JobSubmitter: Executing with tokens: []
+25/12/05 16:23:14 INFO conf.Configuration: resource-types.xml not found
+25/12/05 16:23:14 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+25/12/05 16:23:14 INFO impl.YarnClientImpl: Submitted application application_1764529937562_0582
+25/12/05 16:23:14 INFO mapreduce.Job: The url to track the job: http://ip-172-31-3-80.eu-west-2.compute.internal:8088/proxy/application_1764529937562_0582/
+25/12/05 16:23:14 INFO mapreduce.Job: Running job: job_1764529937562_0582
+25/12/05 16:23:22 INFO mapreduce.Job: Job job_1764529937562_0582 running in uber mode : false
+25/12/05 16:23:22 INFO mapreduce.Job:  map 0% reduce 0%
+25/12/05 16:23:31 INFO mapreduce.Job:  map 100% reduce 0%
+25/12/05 16:23:31 INFO mapreduce.Job: Job job_1764529937562_0582 completed successfully
+25/12/05 16:23:31 INFO mapreduce.Job: Counters: 33
+        File System Counters
+                FILE: Number of bytes read=0
+                FILE: Number of bytes written=259755
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=888
+                HDFS: Number of bytes written=0
+                HDFS: Number of read operations=4
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=0
+                HDFS: Number of bytes read erasure-coded=0
+        Job Counters
+                Launched map tasks=1
+                Rack-local map tasks=1
+                Total time spent by all maps in occupied slots (ms)=6739
+                Total time spent by all reduces in occupied slots (ms)=0
+                Total time spent by all map tasks (ms)=6739
+                Total vcore-milliseconds taken by all map tasks=26956
+                Total megabyte-milliseconds taken by all map tasks=55205888
+        Map-Reduce Framework
+                Map input records=8
+                Map output records=8
+                Input split bytes=190
+                Spilled Records=0
+                Failed Shuffles=0
+                Merged Map outputs=0
+                GC time elapsed (ms)=43
+                CPU time spent (ms)=1070
+                Physical memory (bytes) snapshot=318963712
+                Virtual memory (bytes) snapshot=6637084672
+                Total committed heap usage (bytes)=362283008
+                Peak Map Physical memory (bytes)=318963712
+                Peak Map Virtual memory (bytes)=6637084672
+        File Input Format Counters
+                Bytes Read=0
+        File Output Format Counters
+                Bytes Written=0
+25/12/05 16:23:31 INFO mapreduce.ExportJobBase: Transferred 888 bytes in 23.1695 seconds (38.3263 bytes/sec)
+25/12/05 16:23:31 INFO mapreduce.ExportJobBase: Exported 8 records.
+#Case 2, incremental load
+[ec2-user@ip-172-31-3-80 tsimmons]$ sqoop import --connect jdbc:postgresql://18.134.163.221:5432/testdb?currentSchema=tsimmons --username admin --password admin123 --table employee --target-dir UKUS18nov/tsimmons/employee_incremental/ -m 1 --incremental lastmodified --check-column update_tm --last-value '2025-12-05 11:12:09.000 -0500'
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/jars/slf4j-log4j12-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/jars/log4j-slf4j-impl-2.13.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+25/12/05 17:08:56 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7.7.1.7.0-551
+25/12/05 17:08:56 WARN tool.BaseSqoopTool: Setting your password on the command-line is insecure. Consider using -P instead.
+25/12/05 17:08:56 INFO manager.SqlManager: Using default fetchSize of 1000
+25/12/05 17:08:56 INFO tool.CodeGenTool: Beginning code generation
+25/12/05 17:08:56 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM "employee" AS t LIMIT 1
+25/12/05 17:08:56 INFO orm.CompilationManager: HADOOP_MAPRED_HOME is /opt/cloudera/parcels/CDH/lib/hadoop-mapreduce
+warning: No SupportedSourceVersion annotation found on org.apache.hadoop.hdds.conf.ConfigFileGenerator, returning RELEASE_6.
+warning: Supported source version 'RELEASE_6' from annotation processor 'org.apache.hadoop.hdds.conf.ConfigFileGenerator' less than -source '1.8'
+2 warnings
+25/12/05 17:08:58 WARN orm.CompilationManager: Could not rename /tmp/sqoop-ec2-user/compile/5f83100d68793110c5e09f1a07e677a7/employee.java to /home/ec2-user/ukus18nov/tsimmons/./employee.java. Error: Destination '/home/ec2-user/ukus18nov/tsimmons/./employee.java' already exists
+25/12/05 17:08:58 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-ec2-user/compile/5f83100d68793110c5e09f1a07e677a7/employee.jar
+25/12/05 17:08:59 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM "employee" AS t LIMIT 1
+25/12/05 17:08:59 INFO tool.ImportTool: Incremental import based on column "update_tm"
+25/12/05 17:08:59 INFO tool.ImportTool: Lower bound value: '2025-12-05 11:12:09.000 -0500'
+25/12/05 17:08:59 INFO tool.ImportTool: Upper bound value: '2025-12-05 17:08:59.200095'
+25/12/05 17:08:59 WARN manager.PostgresqlManager: It looks like you are importing from postgresql.
+25/12/05 17:08:59 WARN manager.PostgresqlManager: This transfer can be faster! Use the --direct
+25/12/05 17:08:59 WARN manager.PostgresqlManager: option to exercise a postgresql-specific fast path.
+25/12/05 17:08:59 INFO mapreduce.ImportJobBase: Beginning import of employee
+25/12/05 17:08:59 INFO Configuration.deprecation: mapred.jar is deprecated. Instead, use mapreduce.job.jar
+25/12/05 17:08:59 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
+25/12/05 17:08:59 INFO client.RMProxy: Connecting to ResourceManager at ip-172-31-3-80.eu-west-2.compute.internal/172.31.3.80:8032
+25/12/05 17:08:59 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /user/ec2-user/.staging/job_1764529937562_0588
+25/12/05 17:09:07 INFO db.DBInputFormat: Using read commited transaction isolation
+25/12/05 17:09:07 INFO mapreduce.JobSubmitter: number of splits:1
+25/12/05 17:09:07 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1764529937562_0588
+25/12/05 17:09:07 INFO mapreduce.JobSubmitter: Executing with tokens: []
+25/12/05 17:09:07 INFO conf.Configuration: resource-types.xml not found
+25/12/05 17:09:07 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+25/12/05 17:09:07 INFO impl.YarnClientImpl: Submitted application application_1764529937562_0588
+25/12/05 17:09:07 INFO mapreduce.Job: The url to track the job: http://ip-172-31-3-80.eu-west-2.compute.internal:8088/proxy/application_1764529937562_0588/
+25/12/05 17:09:07 INFO mapreduce.Job: Running job: job_1764529937562_0588
+25/12/05 17:09:13 INFO mapreduce.Job: Job job_1764529937562_0588 running in uber mode : false
+25/12/05 17:09:13 INFO mapreduce.Job:  map 0% reduce 0%
+25/12/05 17:09:30 INFO mapreduce.Job: Task Id : attempt_1764529937562_0588_m_000000_0, Status : FAILED
+Error: java.lang.RuntimeException: org.postgresql.util.PSQLException: The connection attempt failed.
+        at org.apache.sqoop.mapreduce.db.DBInputFormat.getConnection(DBInputFormat.java:226)
+        at org.apache.sqoop.mapreduce.db.DBInputFormat.setDbConf(DBInputFormat.java:170)
+        at org.apache.sqoop.mapreduce.db.DBInputFormat.setConf(DBInputFormat.java:160)
+        at org.apache.hadoop.util.ReflectionUtils.setConf(ReflectionUtils.java:77)
+        at org.apache.hadoop.util.ReflectionUtils.newInstance(ReflectionUtils.java:137)
+        at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:763)
+        at org.apache.hadoop.mapred.MapTask.run(MapTask.java:347)
+        at org.apache.hadoop.mapred.YarnChild$2.run(YarnChild.java:174)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at javax.security.auth.Subject.doAs(Subject.java:422)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1898)
+        at org.apache.hadoop.mapred.YarnChild.main(YarnChild.java:168)
+Caused by: org.postgresql.util.PSQLException: The connection attempt failed.
+        at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:297)
+        at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:49)
+        at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:217)
+        at org.postgresql.Driver.makeConnection(Driver.java:458)
+        at org.postgresql.Driver.connect(Driver.java:260)
+        at java.sql.DriverManager.getConnection(DriverManager.java:664)
+        at java.sql.DriverManager.getConnection(DriverManager.java:247)
+        at org.apache.sqoop.mapreduce.db.DBConfiguration.getConnection(DBConfiguration.java:300)
+        at org.apache.sqoop.mapreduce.db.DBInputFormat.getConnection(DBInputFormat.java:218)
+        ... 11 more
+Caused by: java.net.SocketTimeoutException: connect timed out
+        at java.net.PlainSocketImpl.socketConnect(Native Method)
+        at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+        at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+        at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+        at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+        at java.net.Socket.connect(Socket.java:607)
+        at org.postgresql.core.PGStream.<init>(PGStream.java:81)
+        at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:93)
+        at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:197)
+        ... 19 more
+
+25/12/05 17:09:50 INFO mapreduce.Job:  map 100% reduce 0%
+25/12/05 17:09:51 INFO mapreduce.Job: Job job_1764529937562_0588 completed successfully
+25/12/05 17:09:51 INFO mapreduce.Job: Counters: 34
+        File System Counters
+                FILE: Number of bytes read=0
+                FILE: Number of bytes written=260237
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=85
+                HDFS: Number of bytes written=563
+                HDFS: Number of read operations=6
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=2
+                HDFS: Number of bytes read erasure-coded=0
+        Job Counters
+                Failed map tasks=1
+                Launched map tasks=2
+                Other local map tasks=2
+                Total time spent by all maps in occupied slots (ms)=32594
+                Total time spent by all reduces in occupied slots (ms)=0
+                Total time spent by all map tasks (ms)=32594
+                Total vcore-milliseconds taken by all map tasks=130376
+                Total megabyte-milliseconds taken by all map tasks=267010048
+        Map-Reduce Framework
+                Map input records=6
+                Map output records=6
+                Input split bytes=85
+                Spilled Records=0
+                Failed Shuffles=0
+                Merged Map outputs=0
+                GC time elapsed (ms)=497
+                CPU time spent (ms)=6220
+                Physical memory (bytes) snapshot=276471808
+                Virtual memory (bytes) snapshot=6618370048
+                Total committed heap usage (bytes)=234881024
+                Peak Map Physical memory (bytes)=276471808
+                Peak Map Virtual memory (bytes)=6618370048
+        File Input Format Counters
+                Bytes Read=0
+        File Output Format Counters
+                Bytes Written=563
+25/12/05 17:09:51 INFO mapreduce.ImportJobBase: Transferred 563 bytes in 52.0303 seconds (10.8206 bytes/sec)
+25/12/05 17:09:51 INFO mapreduce.ImportJobBase: Retrieved 6 records.
+25/12/05 17:09:51 INFO tool.ImportTool: Final destination exists, will run merge job.
+25/12/05 17:09:51 INFO tool.ImportTool: Moving data from temporary directory _sqoop/b6b1594d41e44fb6821710c83785bc46_employee to final destination UKUS18nov/tsimmons/employee_incremental
+25/12/05 17:09:51 INFO tool.ImportTool: Incremental import complete! To run another incremental import of all data following this import, supply the following arguments:
+25/12/05 17:09:51 INFO tool.ImportTool:  --incremental lastmodified
+25/12/05 17:09:51 INFO tool.ImportTool:   --check-column update_tm
+25/12/05 17:09:51 INFO tool.ImportTool:   --last-value 2025-12-05 17:08:59.200095
+25/12/05 17:09:51 INFO tool.ImportTool: (Consider saving this with 'sqoop job --create')
+[ec2-user@ip-172-31-3-80 tsimmons]$ hadoop fs -cat UKUS18nov/tsimmons/employee_incremental/part-m-00000
+9,Grace,Holloway,grace.holloway@example.com,Business Analyst,76000.00,2025-12-05 16:39:21.738939
+10,Henry,Bishop,henry.bishop@example.com,Network Administrator,88000.00,2025-12-05 16:39:21.738939
+11,Isabella,Lopez,isabella.lopez@example.com,UI/UX Designer,97000.00,2025-12-05 16:39:21.738939
+12,Jason,Kim,jason.kim@example.com,Technical Writer,67000.00,2025-12-05 16:39:21.738939
+13,Kendra,Olsen,kendra.olsen@example.com,Sales Representative,59000.00,2025-12-05 16:39:21.738939
+14,Liam,Patel,liam.patel@example.com,QA Engineer,82000.00,2025-12-05 16:39:21.738939
+
+#Case 2, incremental load export
+[ec2-user@ip-172-31-3-80 tsimmons]$ sqoop export --connect jdbc:postgresql://18.134.163.221:5432/testdb?currentSchema=tsimmons --username admin --password admin123 --table employee_ingested --m 1 --export-dir UKUS18nov/tsimmons/employee_incremental/
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/jars/slf4j-log4j12-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/opt/cloudera/parcels/CDH-7.1.7-1.cdh7.1.7.p0.15945976/jars/log4j-slf4j-impl-2.13.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+25/12/05 17:16:26 INFO sqoop.Sqoop: Running Sqoop version: 1.4.7.7.1.7.0-551
+25/12/05 17:16:26 WARN tool.BaseSqoopTool: Setting your password on the command-line is insecure. Consider using -P instead.
+25/12/05 17:16:26 INFO manager.SqlManager: Using default fetchSize of 1000
+25/12/05 17:16:26 INFO tool.CodeGenTool: Beginning code generation
+25/12/05 17:16:26 INFO manager.SqlManager: Executing SQL statement: SELECT t.* FROM "employee_ingested" AS t LIMIT 1
+25/12/05 17:16:26 INFO orm.CompilationManager: HADOOP_MAPRED_HOME is /opt/cloudera/parcels/CDH/lib/hadoop-mapreduce
+warning: No SupportedSourceVersion annotation found on org.apache.hadoop.hdds.conf.ConfigFileGenerator, returning RELEASE_6.
+warning: Supported source version 'RELEASE_6' from annotation processor 'org.apache.hadoop.hdds.conf.ConfigFileGenerator' less than -source '1.8'
+2 warnings
+25/12/05 17:16:28 WARN orm.CompilationManager: Could not rename /tmp/sqoop-ec2-user/compile/f2e9617f9ff7fa0b4aab05e308d50184/employee_ingested.java to /home/ec2-user/ukus18nov/tsimmons/./employee_ingested.java. Error: Destination '/home/ec2-user/ukus18nov/tsimmons/./employee_ingested.java' already exists
+25/12/05 17:16:28 INFO orm.CompilationManager: Writing jar file: /tmp/sqoop-ec2-user/compile/f2e9617f9ff7fa0b4aab05e308d50184/employee_ingested.jar
+25/12/05 17:16:28 INFO mapreduce.ExportJobBase: Beginning export of employee_ingested
+25/12/05 17:16:28 INFO Configuration.deprecation: mapred.jar is deprecated. Instead, use mapreduce.job.jar
+25/12/05 17:16:29 INFO Configuration.deprecation: mapred.reduce.tasks.speculative.execution is deprecated. Instead, use mapreduce.reduce.speculative
+25/12/05 17:16:29 INFO Configuration.deprecation: mapred.map.tasks.speculative.execution is deprecated. Instead, use mapreduce.map.speculative
+25/12/05 17:16:29 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
+25/12/05 17:16:29 INFO client.RMProxy: Connecting to ResourceManager at ip-172-31-3-80.eu-west-2.compute.internal/172.31.3.80:8032
+25/12/05 17:16:29 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /user/ec2-user/.staging/job_1764529937562_0591
+25/12/05 17:16:37 INFO input.FileInputFormat: Total input files to process : 1
+25/12/05 17:16:37 INFO input.FileInputFormat: Total input files to process : 1
+25/12/05 17:16:37 INFO mapreduce.JobSubmitter: number of splits:1
+25/12/05 17:16:37 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1764529937562_0591
+25/12/05 17:16:37 INFO mapreduce.JobSubmitter: Executing with tokens: []
+25/12/05 17:16:37 INFO conf.Configuration: resource-types.xml not found
+25/12/05 17:16:37 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+25/12/05 17:16:38 INFO impl.YarnClientImpl: Submitted application application_1764529937562_0591
+25/12/05 17:16:38 INFO mapreduce.Job: The url to track the job: http://ip-172-31-3-80.eu-west-2.compute.internal:8088/proxy/application_1764529937562_0591/
+25/12/05 17:16:38 INFO mapreduce.Job: Running job: job_1764529937562_0591
+25/12/05 17:17:04 INFO mapreduce.Job: Job job_1764529937562_0591 running in uber mode : false
+25/12/05 17:17:04 INFO mapreduce.Job:  map 0% reduce 0%
+25/12/05 17:17:12 INFO mapreduce.Job:  map 100% reduce 0%
+25/12/05 17:17:13 INFO mapreduce.Job: Job job_1764529937562_0591 completed successfully
+25/12/05 17:17:14 INFO mapreduce.Job: Counters: 33
+        File System Counters
+                FILE: Number of bytes read=0
+                FILE: Number of bytes written=259766
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=767
+                HDFS: Number of bytes written=0
+                HDFS: Number of read operations=4
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=0
+                HDFS: Number of bytes read erasure-coded=0
+        Job Counters
+                Launched map tasks=1
+                Rack-local map tasks=1
+                Total time spent by all maps in occupied slots (ms)=4792
+                Total time spent by all reduces in occupied slots (ms)=0
+                Total time spent by all map tasks (ms)=4792
+                Total vcore-milliseconds taken by all map tasks=19168
+                Total megabyte-milliseconds taken by all map tasks=39256064
+        Map-Reduce Framework
+                Map input records=6
+                Map output records=6
+                Input split bytes=201
+                Spilled Records=0
+                Failed Shuffles=0
+                Merged Map outputs=0
+                GC time elapsed (ms)=47
+                CPU time spent (ms)=1380
+                Physical memory (bytes) snapshot=339857408
+                Virtual memory (bytes) snapshot=6637051904
+                Total committed heap usage (bytes)=359661568
+                Peak Map Physical memory (bytes)=339857408
+                Peak Map Virtual memory (bytes)=6637051904
+        File Input Format Counters
+                Bytes Read=0
+        File Output Format Counters
+                Bytes Written=0
+25/12/05 17:17:14 INFO mapreduce.ExportJobBase: Transferred 767 bytes in 44.6468 seconds (17.1793 bytes/sec)
+25/12/05 17:17:14 INFO mapreduce.ExportJobBase: Exported 6 records.
+
