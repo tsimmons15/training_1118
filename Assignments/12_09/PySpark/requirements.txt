@@ -1,0 +1,50 @@
+Data Cleaning Checklist (Just Pointers)
+
+Remove duplicate rows
+
+Handle missing values (drop or fill)
+
+Standardize date formats
+
+Fix inconsistent text formats (case, spacing)
+
+Trim unwanted spaces
+
+Convert data types correctly (int, float, date)
+
+Remove corrupted or invalid records
+
+Handle outliers (cap, remove, or flag)
+
+Validate key column values (ID > 0, amounts ≥ 0)
+
+Fix inconsistent categorical values (e.g., "Complete" vs "complete")
+
+Remove unnecessary columns
+
+Rename ambiguous column names
+
+Handle nulls in important fields
+
+Standardize units (kg vs g, USD vs INR)
+
+Validate referential integrity (foreign keys exist)
+
+Detect and correct typos
+
+Check for duplicate keys
+
+Normalize or scale numeric features (if ML)
+
+Remove extreme skew / imbalance
+
+Ensure unique identifiers where required
+
+Fix incorrect date ranges (future dates, negative ages)
+
+
+do this 4 transformations - 
+How can you rank customers based on total revenue?
+How do you pivot order status so each status becomes a column?
+How do you calculate monthly revenue trends from order_date? 
+How can you identify customers who have churned (no orders in last X days)?
